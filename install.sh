@@ -1,9 +1,15 @@
 #!/bin/bash
 
-mkdir -p $HOME/prometheus
-touch $HOME/prometheus/prometheus.yml
+# Get the current directory
+CURRENT_DIR=$(pwd)
 
-sudo chown -R 1001:1001 $HOME/prometheus-persistence
-sudo chmod -R 775 $HOME/prometheus-persistence
+# Create required directories and files
+mkdir -p "$CURRENT_DIR/prometheus-persistence"
+touch "$CURRENT_DIR/prometheus.yml"
 
-docker-compose up
+# Set correct ownership and permissions
+sudo chown -R 1001:1001 "$CURRENT_DIR/prometheus-persistence"
+sudo chmod -R 775 "$CURRENT_DIR/prometheus-persistence"
+
+# Run Docker Compose
+docker-compose up -d
