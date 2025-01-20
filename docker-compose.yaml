@@ -4,9 +4,9 @@ services:
     container_name: prometheus
     volumes:
       # Mount for Prometheus data persistence
-      - $HOME/prometheus/prometheus-persistence:/opt/bitnami/prometheus/data
+      - ./prometheus-persistence:/opt/bitnami/prometheus/data
       # Mount for Prometheus configuration file
-      - $HOME/prometheus/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml
+      - ./prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml
     ports:
       - "9090:9090"
     restart: unless-stopped
